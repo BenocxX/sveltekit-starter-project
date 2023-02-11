@@ -14,7 +14,7 @@ npm run dev
 Note: files will be **automatically** formatted on commit via Husky pre-commit hook.
 
 ```
-npm format
+npm run format
 ```
 
 ## Testing
@@ -24,7 +24,7 @@ npm format
 Write your unit tests in `src/tests/unit/`
 
 ```
-npm test:unit
+npm run test:unit
 ```
 
 #### End to End tests
@@ -32,7 +32,7 @@ npm test:unit
 Write your End to End tests in `src/tests/e2e/`
 
 ```
-npm test
+npm run test
 ```
 
 ## Database

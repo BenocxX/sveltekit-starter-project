@@ -22,14 +22,16 @@ jobs:
       - name: Install packages
         run: npm install
       
-      - name: Run Prettier
-        run: npm run format
+      #- name: Run Prettier
+        #run: npm run format
         
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Prettify code
+        uses: creyD/prettier_action@v3.3
         with:
-          token: ${{ secrets.WORKFLOW_PAT }}
-          commit_message: Apply formatting changes (prettier)
+          # This part is also where you can pass other options, for example:
+          prettier_options: --write **/*.{js,ts,svelte,md}
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
           
       - name: Run End to End tests
         run: npx playwright install && npm run test

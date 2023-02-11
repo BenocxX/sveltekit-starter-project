@@ -36,4 +36,5 @@ npm test
 ```
 
 ## CI/CD
+
 I've setup a simple Github Action Workflow that Prettyfies the code, runs the unit tests and runs the E2E tests. I used a PAT, you might need to generate one and add it to the repo's secrets.

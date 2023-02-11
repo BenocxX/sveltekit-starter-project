@@ -23,7 +23,8 @@ jobs:
         run: npm run format
         
       - name: Run End to End tests
-        run: npm run test
+      - run: npx playwright install
+      - run: npm run test
         
       - name: Run Unit tests
         run: npm run test:unit

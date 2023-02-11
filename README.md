@@ -8,13 +8,13 @@ npm install
 npm run dev
 ```
 
-## To format files
+## Formatting
 Note: files will be **automatically** formatted on commit via Husky pre-commit hook.
 ```
 npm format
 ```
 
-## To run tests
+## Tests
 #### Unit tests
 Write your unit tests in `src/tests/unit/`
 ```

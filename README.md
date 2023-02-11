@@ -36,9 +36,11 @@ npm test
 ```
 
 ## Database
+
 For this starter project, I've setup a barebones `docker-compose.yml` config. We only run a PostgreSQL container. We are using Prisma to access the database.
 
 To push your models defined in `prisma.schema`:
+
 ```
 npx prisma db push
 ```

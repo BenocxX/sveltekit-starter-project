@@ -14,7 +14,7 @@ Note: files will be **automatically** formatted on commit via Husky pre-commit h
 npm format
 ```
 
-## Tests
+## Testing
 #### Unit tests
 Write your unit tests in `src/tests/unit/`
 ```

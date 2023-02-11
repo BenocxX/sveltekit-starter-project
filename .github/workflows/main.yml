@@ -12,19 +12,36 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: '.nvmrc' # (1)
           cache: 'npm'
 
-      - name: Install packages
-        run: npm install
-      
-      - name: Run Prettier
-        run: npm format
+      # https://dev.to/drakulavich/aggressive-dependency-caching-in-github-actions-3c64
+      - name: Cache NPM dependencies # (2)
+        uses: actions/cache@v3
+        id: cache-primes
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies # (3)
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: npm ci
         
+      - name: Prettify code
+        uses: creyD/prettier_action@v3.3
+        with:
+          # This part is also where you can pass other options, for example:
+          prettier_options: --write **/*.{js,ts,svelte,md}
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+          
       - name: Run End to End tests
-        run: npm test
+        run: npx playwright install && npm run test
         
       - name: Run Unit tests
-        run: npm test:unit
+        run: npm run test:unit

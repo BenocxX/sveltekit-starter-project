@@ -3,5 +3,3 @@
   Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read asd asd asd asd
   as das das dthe documentation ias das test pre-commit
 </p>
-
-<h1>Test Github Actions, Tests and Prettier</h1>

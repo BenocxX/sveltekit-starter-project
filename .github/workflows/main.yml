@@ -17,20 +17,20 @@ jobs:
       
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: npm-
+          node-version-file: '.nvmrc' # (1)
+          cache: 'npm'
 
-      - name: Install packages
-        run: npm install
-      
-      #- name: Run Prettier
-        #run: npm run format
+      # https://dev.to/drakulavich/aggressive-dependency-caching-in-github-actions-3c64
+      - name: Cache NPM dependencies # (2)
+        uses: actions/cache@v3
+        id: cache-primes
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies # (3)
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: npm ci
         
       - name: Prettify code
         uses: creyD/prettier_action@v3.3

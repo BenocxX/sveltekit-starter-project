@@ -1,9 +1,8 @@
 import type { BaseTranslation } from '../i18n-types';
 
+// For more informations: https://blog.encodeart.dev/typesafe-i18n-with-sveltekit
 const en = {
-  // TODO: your translations go here
-  HI: 'Hi {name:string}!',
-  APPLES: '{apples:number} apple{{s}}',
+  HELLO: 'Hello {name:string}!',
 } satisfies BaseTranslation;
 
 export default en;

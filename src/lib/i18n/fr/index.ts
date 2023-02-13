@@ -1,8 +1,7 @@
 import type { Translation } from '../i18n-types';
 
 const fr = {
-  HI: 'Bonjour {name}',
-  APPLES: '{apples} pomme{{s}}',
+  HELLO: 'Bonjour {name}',
 } satisfies Translation;
 
 export default fr;

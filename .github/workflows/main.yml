@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
 
       - name: Run End to End tests
-        run: npx playwright install && npm run test
+        run: npx playwright install && npm run typesafe-i18n -- --no-watch && npm run test
 
       - name: Run Unit tests
         run: npm run test:unit
